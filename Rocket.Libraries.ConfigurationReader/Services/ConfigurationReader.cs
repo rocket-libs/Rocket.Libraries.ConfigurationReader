@@ -3,7 +3,7 @@ using System;
 
 namespace Rocket.Libraries.ConfigurationReader.Services
 {
-    public class ConfigurationReader
+    public class ConfigurationReader : IDisposable
     {
         private IConfiguration ReadConfiguration()
         {
@@ -21,6 +21,11 @@ namespace Rocket.Libraries.ConfigurationReader.Services
         {
             var configuration = ReadConfiguration();
             return configuration.GetSection(sectionName).Get<TResult>();
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }
